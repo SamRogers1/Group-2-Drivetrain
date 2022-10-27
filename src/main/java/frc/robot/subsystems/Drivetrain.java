@@ -27,7 +27,5 @@ public class Drivetrain extends SubsystemBase{
 
     DifferentialDrive drive = new DifferentialDrive(leftMotors, rightMotors);
 
-    
-    drive.arcadeDrive(-driveStick.getY(), driveStick.getX());
-
-}
+   
+    }
