@@ -1,12 +1,13 @@
 package frc.robot.subsystems;
 
-import com.kauailabs.navx.frc.AHRS;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkMax.IdleMode;
 
+import frc.robot.util.XboxController;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+//import edu.wpi.first.wpilibj.drive.arcadeDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
@@ -25,7 +26,20 @@ public class Drivetrain extends SubsystemBase{
 
     public final MotorControllerGroup rightMotors = new MotorControllerGroup(rightMotor1, rightMotor2, rightMotor3);
 
-    DifferentialDrive drive = new DifferentialDrive(leftMotors, rightMotors);
+    DifferentialDrive drive = new DifferentialDrive(leftMotors, rightMotors); 
 
-   
+    public Drivetrain(XboxController driverController){
+        rightMotor1.setInverted(true);
+        rightMotor2.setInverted(true);
+        rightMotor3.setInverted(true);
     }
+
+
+
+    public void arcadeDrive(double throttle, double turn) {
+        drive.arcadeDrive(throttle, turn);
+    }
+
+    }
+
+  
