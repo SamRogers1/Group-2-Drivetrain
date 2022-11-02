@@ -6,6 +6,7 @@ package frc.robot;
 
 
 import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -28,6 +29,10 @@ public class RobotContainer {
   private final Drivetrain drivetrain = new Drivetrain(driverController);
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
 
+
+  SendableChooser<Command> autoChooser = new SendableChooser<>();
+ 
+  
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the button bindings
@@ -36,7 +41,7 @@ public class RobotContainer {
       this.drivetrain.arcadeDrive(driverController.getAxisValue(XboxController.Axis.LEFT_Y), driverController.getAxisValue(XboxController.Axis.RIGHT_X)),
     drivetrain));
    
-   
+    autoChooser.setDefaultOption("Moving Auto", movingAuto);
     configureButtonBindings();
   }
 
