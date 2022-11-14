@@ -41,7 +41,7 @@ public class RobotContainer {
       this.drivetrain.arcadeDrive(driverController.getAxisValue(XboxController.Axis.LEFT_Y), driverController.getAxisValue(XboxController.Axis.RIGHT_X)),
     drivetrain));
    
-    autoChooser.setDefaultOption("Moving Auto", movingAuto);
+    autoChooser.setDefaultOption("Moving Auto", m_autoCommand);
     configureButtonBindings();
   }
 
