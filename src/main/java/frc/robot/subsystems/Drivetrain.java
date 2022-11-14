@@ -6,6 +6,7 @@ import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkMax.IdleMode;
 
 import frc.robot.util.XboxController;
+import edu.wpi.first.math.filter.SlewRateLimiter;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 //import edu.wpi.first.wpilibj.drive.arcadeDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
@@ -33,11 +34,13 @@ public class Drivetrain extends SubsystemBase{
         rightMotor2.setInverted(true);
         rightMotor3.setInverted(true);
     }
+    SlewRateLimiter throttleLimit = new SlewRateLimiter(1.5);
+    SlewRateLimiter turnLimit = new SlewRateLimiter(1.5);
 
 
 
     public void arcadeDrive(double throttle, double turn) {
-        drive.arcadeDrive(throttle, turn);
+        drive.arcadeDrive(throttleLimit.calculate(throttle), turnLimit.calculate(turn));
     }
 
     }
